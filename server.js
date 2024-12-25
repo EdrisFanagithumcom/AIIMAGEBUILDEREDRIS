@@ -7,7 +7,8 @@ app.use(express.json());
 app.post('/generate-image', async (req, res) => {
   try {
     const text = req.body.text;
-    const apiToken = 'r8_DUHpi9l3gmJk6jEXjPs7bieI4HBKXPb0OJ2pQ';
+    require('dotenv').config();
+    const apiToken = process.env.REPLICATE_API_TOKEN;
     const response = await fetch('https://api.replicate.com/v1/models/black-forest-labs/flux-1.1-pro-ultra/predictions', {
       method: 'POST',
       headers: {
